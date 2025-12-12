@@ -22,14 +22,12 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<header>
-
+<header class="px-4 flex justify-end items-center bg-red-500/20">
+    <button class="">
+        Settings
+    </button>
 </header>
 
-<main>
-
-</main>
-
-<section class="w-screen h-screen overflow-hidden bg-red-500">
+<main class="w-full h-full flex justify-center items-center overflow-hidden">
     {@render children()}
-</section>
+</main>

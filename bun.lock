@@ -1,9 +1,12 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "gift-cyclone",
       "dependencies": {
+        "@fontsource-variable/noto-serif-lao": "^5.2.7",
+        "@fontsource/cookie": "^5.2.7",
         "@lucide/svelte": "^0.560.0",
       },
       "devDependencies": {
@@ -102,6 +105,10 @@
     "@eslint/object-schema": ["@eslint/object-schema@2.1.7", "", {}, "sha512-VtAOaymWVfZcmZbp6E2mympDIHvyjXs/12LqWYjVw6qjrfF+VK+fyG33kChz3nnK+SU5/NeHOqrTEHS8sXO3OA=="],
 
     "@eslint/plugin-kit": ["@eslint/plugin-kit@0.4.1", "", { "dependencies": { "@eslint/core": "^0.17.0", "levn": "^0.4.1" } }, "sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA=="],
+
+    "@fontsource-variable/noto-serif-lao": ["@fontsource-variable/noto-serif-lao@5.2.7", "", {}, "sha512-NDIOrhuSIYhWMA3vtKQ+r/IxgF9xJ/njRbGxRQ7Gq7HXuzz/IRVLMSLmQvQlHylyJ+7r4N473fuNHAolUU5yuw=="],
+
+    "@fontsource/cookie": ["@fontsource/cookie@5.2.7", "", {}, "sha512-jI772JjcXz5zjraPzM819udIFhxyeZf6UZL2UuodOsg6Yh9DMQoeGZ1fkHqMXivYpC0qi3qpiln++c87S4mRyA=="],
 
     "@humanfs/core": ["@humanfs/core@0.19.1", "", {}, "sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA=="],
 
