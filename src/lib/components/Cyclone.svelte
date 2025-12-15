@@ -22,7 +22,16 @@
 			// spinBtn.disabled = false;
 		}, 1600);
 	});
+
+	function onKeyDown(e: KeyboardEvent) {
+		if (e.code === "Escape") {
+		  e.preventDefault();
+		  close();
+		}
+	}
 </script>
+
+<svelte:window onkeydown={onKeyDown} />
 
 <button
 	onclick={close}
@@ -33,7 +42,7 @@
 <section class="fixed top-1/2 left-1/2 w-1/2 h-auto -translate-1/2 z-20 pointer-events-none">
 	<div class="perspective-distant">
 		<div class="mx-auto relative w-95 h-120 transform-3d transition duration-500" bind:this={card}>
-			<div class="absolute p-4 w-full h-full bg-white rounded-xl shadow-xl">
+			<div class="absolute p-4 w-full h-full border border-black/20 bg-white rounded-xl shadow-xl">
 				<h1 class="w-full text-6xl text-center">{participant}</h1>
 			</div>
 		</div>
