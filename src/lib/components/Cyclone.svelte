@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Hand from '@lucide/svelte/icons/hand';
 	import HandIcon from '@lucide/svelte/icons/hand';
 	import WandIcon from '@lucide/svelte/icons/wand-sparkles';
 	import { onMount } from 'svelte';
@@ -15,16 +14,15 @@
 	} = $props();
 
 	let card = $state<HTMLDivElement | null>(null);
-	let participant = $state('CYCLONE');
+	let display_participant = $state('Spinning...');
+	let display_power = $state('');
 
 	onMount(() => {
 		card!.classList.add('animate-cyclone');
 		setTimeout(() => {
-			// const names = ['adam', 'meow', 'moose', 'barry', 'john'];
-			// const randomName = names[Math.floor(Math.random() * names.length)];
-			participant = name;
+			display_participant = name;
+			display_power = power;
 			card!.classList.remove('animate-cyclone');
-			// spinBtn.disabled = false;
 		}, 1600);
 	});
 
@@ -51,15 +49,15 @@
 				<h1
 					class="inline-block w-full h-16 text-6xl text-center text-transparent bg-linear-to-bl from-[#fcff9e] to-[#c67700] bg-clip-text"
 				>
-					{name || 'Cyclone'}
+					{display_participant || 'Cyclone'}
 				</h1>
 
-				<h2 class="mt-10 flex gap-x-4 justify-start items-center text-5xl">
+				<h2 class="mt-10 mb-3 flex gap-x-4 justify-start items-center text-5xl">
 					Magic<span><WandIcon size={30} color="#c67700" /></span>
 				</h2>
-				<p>{power}</p>
+				<p>{display_power || 'spinning...'}</p>
 
-				<h2 class="mt-10 flex gap-x-4 justify-start items-center text-5xl">
+				<h2 class="mt-10 mb-3 flex gap-x-4 justify-start items-center text-5xl">
 					Task<span><HandIcon size={30} color="#c67700" /></span>
 				</h2>
 				<p>Choose one of the following</p>

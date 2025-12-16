@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { settings as settings_state } from './state.svelte';
+	import { settings as settings_state } from './state.svelte';
 	import Cyclone from '$lib/components/Cyclone.svelte';
 	import Settings from '$lib/components/Settings.svelte';
 	import SettingsIcon from '@lucide/svelte/icons/settings-2';
@@ -7,20 +7,22 @@
 	let spin = $state(false);
 	let settings = $state(false);
 
-	let chosen = $state("");
+	let selectedPerson = $state('');
+	let selectedPower = $state('');
 
-	const close_cyclone = () => spin = false;
-	const close_settings = () => settings = false;
+	const close_cyclone = () => (spin = false);
+	const close_settings = () => (settings = false);
 
 	function spin_cyclone() {
-	  if (settings) return;
-	  chosen = settings_state.participant;
+		if (settings) return;
+		selectedPerson = settings_state.participant;
+		selectedPower = settings_state.power;
 		spin = true;
 	}
 
 	function onKeyDown(e: KeyboardEvent) {
-		if (e.code === "Space") {
-		  e.preventDefault();
+		if (e.code === 'Space') {
+			e.preventDefault();
 			spin_cyclone();
 		}
 	}
@@ -29,11 +31,11 @@
 <svelte:window on:keydown={onKeyDown} />
 
 {#if spin}
-	<Cyclone name={chosen} power="Everyone rotates present clockwise" close={close_cyclone} />
+	<Cyclone name={selectedPerson} power={selectedPower} close={close_cyclone} />
 {/if}
 
 {#if settings}
-    <Settings close={close_settings} />
+	<Settings close={close_settings} />
 {/if}
 
 <section
@@ -53,7 +55,7 @@
 			<span>Spin the cyclone</span>
 		</button>
 		<button
-		    onclick={() => settings=true}
+			onclick={() => (settings = true)}
 			class="p-2 flex justify-center items-center gap-2 border border-black/20 bg-white rounded-md shadow-lg"
 		>
 			<SettingsIcon />

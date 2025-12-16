@@ -40,7 +40,9 @@ class Settings {
 	}
 
 	get power() {
-		return this.select_random(this.#powers);
+		const rando = Math.floor(Math.random() * this.#powers.length);
+		const selected = this.#powers.splice(rando, 1)[0];
+		return selected;
 	}
 	set power(value: string) {
 		if (this.#powers.includes(value)) return;
