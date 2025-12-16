@@ -1,16 +1,21 @@
 <script lang="ts">
+	import Hand from '@lucide/svelte/icons/hand';
+	import HandIcon from '@lucide/svelte/icons/hand';
+	import WandIcon from '@lucide/svelte/icons/wand-sparkles';
 	import { onMount } from 'svelte';
 
 	let {
 		name,
+		power,
 		close = $bindable()
 	}: {
 		name: string;
+		power: string;
 		close: VoidFunction;
 	} = $props();
 
 	let card = $state<HTMLDivElement | null>(null);
-	let participant = $state();
+	let participant = $state('CYCLONE');
 
 	onMount(() => {
 		card!.classList.add('animate-cyclone');
@@ -24,9 +29,9 @@
 	});
 
 	function onKeyDown(e: KeyboardEvent) {
-		if (e.code === "Escape") {
-		  e.preventDefault();
-		  close();
+		if (e.code === 'Escape') {
+			e.preventDefault();
+			close();
 		}
 	}
 </script>
@@ -43,7 +48,25 @@
 	<div class="perspective-distant">
 		<div class="mx-auto relative w-95 h-120 transform-3d transition duration-500" bind:this={card}>
 			<div class="absolute p-4 w-full h-full border border-black/20 bg-white rounded-xl shadow-xl">
-				<h1 class="w-full text-6xl text-center">{participant}</h1>
+				<h1
+					class="inline-block w-full h-16 text-6xl text-center text-transparent bg-linear-to-bl from-[#fcff9e] to-[#c67700] bg-clip-text"
+				>
+					{name || 'Cyclone'}
+				</h1>
+
+				<h2 class="mt-10 flex gap-x-4 justify-start items-center text-5xl">
+					Magic<span><WandIcon size={30} color="#c67700" /></span>
+				</h2>
+				<p>{power}</p>
+
+				<h2 class="mt-10 flex gap-x-4 justify-start items-center text-5xl">
+					Task<span><HandIcon size={30} color="#c67700" /></span>
+				</h2>
+				<p>Choose one of the following</p>
+				<ul class="pl-3">
+					<li>Swap current present with someone elses</li>
+					<li>Open current present</li>
+				</ul>
 			</div>
 		</div>
 	</div>

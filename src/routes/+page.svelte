@@ -1,19 +1,27 @@
 <script lang="ts">
+  import { settings as settings_state } from './state.svelte';
 	import Cyclone from '$lib/components/Cyclone.svelte';
 	import Settings from '$lib/components/Settings.svelte';
 	import SettingsIcon from '@lucide/svelte/icons/settings-2';
 
 	let spin = $state(false);
-	let settings = $state(true);
+	let settings = $state(false);
+
+	let chosen = $state("");
 
 	const close_cyclone = () => spin = false;
 	const close_settings = () => settings = false;
 
+	function spin_cyclone() {
+	  if (settings) return;
+	  chosen = settings_state.participant;
+		spin = true;
+	}
+
 	function onKeyDown(e: KeyboardEvent) {
 		if (e.code === "Space") {
-		  if (settings) return;
 		  e.preventDefault();
-		  spin = true;
+			spin_cyclone();
 		}
 	}
 </script>
@@ -21,7 +29,7 @@
 <svelte:window on:keydown={onKeyDown} />
 
 {#if spin}
-	<Cyclone name="Adam" close={close_cyclone} />
+	<Cyclone name={chosen} power="Everyone rotates present clockwise" close={close_cyclone} />
 {/if}
 
 {#if settings}
@@ -38,15 +46,15 @@
 
 	<div class="flex gap-8 justify-center items-center">
 		<button
-			onclick={() => spin=true}
-			class="px-4 py-2 flex justify-center items-center gap-2 border border-black/20 bg-white rounded-md shadow-lg"
+			onclick={spin_cyclone}
+			class="p-2 flex justify-center items-center gap-2 border border-black/20 bg-white rounded-md shadow-lg"
 		>
-			<kbd class="border border-gray-300 rounded-md bg-neutral-100">Space</kbd>
+			<kbd class="px-2 border border-gray-300 rounded-md bg-neutral-100">Space</kbd>
 			<span>Spin the cyclone</span>
 		</button>
 		<button
 		    onclick={() => settings=true}
-			class="px-4 py-2 flex justify-center items-center gap-2 border border-black/20 bg-white rounded-md shadow-lg"
+			class="p-2 flex justify-center items-center gap-2 border border-black/20 bg-white rounded-md shadow-lg"
 		>
 			<SettingsIcon />
 			Settings
