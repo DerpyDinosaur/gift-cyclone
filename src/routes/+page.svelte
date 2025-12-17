@@ -5,7 +5,7 @@
 	import SettingsIcon from '@lucide/svelte/icons/settings-2';
 
 	let spin = $state(false);
-	let settings = $state(true);
+	let settings = $state(false);
 
 	let selectedPerson = $state('');
 	let selectedPower = $state('');
