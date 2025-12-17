@@ -1,12 +1,14 @@
 class Settings {
 	#participants = $state<string[]>([]);
 	#powers = $state<string[]>([
-		'Rotate presents clockwise',
-		'Rotate presents anti-clockwise',
-		'Pick three people that all have to exchange presents',
-		'Force someone to open a present',
-		'If there is a present in the pile you may swap (even after opening)',
-		'Before your next action you are allowed to inspect 2 presents before stealing/opening'
+		'Cyclone: All presents shift clockwise',
+		'Reverse Cyclone: All presents shift anti-clockwise',
+		'Round Robin: Pick three people who must exchange presents with each other',
+		'Christmas Spirit: Force someone to open a present',
+		'Ungrateful: If there is a present in the pile, you may swap with it (even after opening yours)',
+		'Sticky Beak: Inspect any two unopened presents before your next action',
+		'Mirror: Copy the last ability that was used',
+		'Undo: Reverse the last ability used (Only moving magic)',
 	]);
 
 	select_random(arr: string[]) {

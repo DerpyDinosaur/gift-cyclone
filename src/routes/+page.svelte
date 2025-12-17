@@ -5,7 +5,7 @@
 	import SettingsIcon from '@lucide/svelte/icons/settings-2';
 
 	let spin = $state(false);
-	let settings = $state(false);
+	let settings = $state(true);
 
 	let selectedPerson = $state('');
 	let selectedPower = $state('');
@@ -21,6 +21,7 @@
 	}
 
 	function onKeyDown(e: KeyboardEvent) {
+		if (settings === true) return;
 		if (e.code === 'Space') {
 			e.preventDefault();
 			spin_cyclone();

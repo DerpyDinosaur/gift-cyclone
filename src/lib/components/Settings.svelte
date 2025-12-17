@@ -38,25 +38,21 @@
 	class="fixed top-0 left-0 w-full h-full bg-black/20 backdrop-blur-md z-20"
 ></button>
 
-<section
-	class="p-4 fixed left-1/2 top-1/6 -translate-x-1/2 flex gap-4 flex-col justify-center items-center w-1/2 h-auto border border-white/20 rounded-xl shadow-xl bg-white z-20"
->
-	<header>
-		<h1 class="text-5xl">Settings</h1>
-	</header>
+<section class="p-4 fixed top-1/2 left-1/2 -translate-1/2 w-1/2 flex flex-col justify-center items-center gap-4 border border-black/20 rounded-xl shadow-xl bg-white z-20">
+    <header>
+        <h1 class="text-5xl">Settings</h1>
+    </header>
 
-	<div
-		class="w-full grid justify-around items-center grid-cols-2 grid-rows-[auto_1fr] gap-x-6 gap-y-4"
-	>
-		<h2 class="col-span-2 text-4xl">Participants</h2>
+    <div class="w-full grid grid-cols-2 grid-rows-[auto_1fr] gap-x-6">
+        <h2 class="mb-4 text-4xl col-span-2">Participants</h2>
 
-		<textarea
+        <textarea
 			bind:value={participants_string}
-			class="ml-2 p-2 w-full h-full min-h-60 border border-black/10 bg-gray-100 rounded-md shadow-md"
+			class="p-4 w-full max-h-60 border border-black/10 rounded-md shadow-md focus:outline-1 focus:outline-amber-400"
 		></textarea>
 
-		<div
-			class="mr-2 p-2 w-full h-full flex gap-4 justify-start items-start flex-wrap border border-black/10 rounded-md"
+        <div
+			class="mr-2 p-2 w-full max-h-50 overflow-y-scroll flex gap-4 justify-start items-start flex-wrap border border-black/10 rounded-md"
 		>
 			{#each participants as participant (participant)}
 				<div class="px-2 py-1 rounded-md bg-neutral-100 border border-black/10 shadow-md">
@@ -64,30 +60,28 @@
 				</div>
 			{/each}
 		</div>
-	</div>
+    </div>
 
-	<div
-		class="w-full grid justify-around items-center grid-cols-2 grid-rows-[auto_1fr] gap-x-6 gap-y-4"
-	>
-		<h2 class="col-span-2 text-4xl">Powers</h2>
+    <div class="w-full grid grid-cols-2 grid-rows-[auto_1fr] gap-x-6">
+        <h2 class="text-4xl col-span-2">Powers</h2>
 
-		<textarea
+        <textarea
 			bind:value={powers_string}
-			class="ml-2 p-2 w-full h-full min-h-60 border border-black/10 bg-gray-100 rounded-md shadow-md"
+			class="w-full max-h-60 border border-black/10 rounded-md shadow-md focus:outline-1 focus:outline-amber-400"
 		></textarea>
 
-		<div
-			class="mr-2 p-2 w-full h-full flex gap-4 justify-start items-start flex-wrap border border-black/10 rounded-md"
+        <div
+			class="mr-2 p-2 w-full max-h-60 overflow-y-scroll flex gap-4 justify-start items-start flex-wrap border border-black/10 rounded-md"
 		>
-			{#each powers as power (power)}
+		    {#each powers as power (power)}
 				<div class="px-2 py-1 rounded-md bg-neutral-100 border border-black/10 shadow-md">
 					{power}
 				</div>
 			{/each}
 		</div>
-	</div>
+    </div>
 
-	<div>
+    <div>
 		<button onclick={handle_submit} class="px-4 py-2 border border-black/10 rounded-md shadow-md"
 			>Submit</button
 		>
