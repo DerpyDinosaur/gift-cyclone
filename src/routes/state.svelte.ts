@@ -17,13 +17,6 @@ class Settings {
 		return selected;
 	}
 
-	get card() {
-		return {
-			participant: this.#participants[0],
-			powers: this.#powers[0]
-		};
-	}
-
 	get participant() {
 		return this.select_random(this.#participants);
 	}
@@ -41,8 +34,8 @@ class Settings {
 
 	get power() {
 		const rando = Math.floor(Math.random() * this.#powers.length);
-		const selected = this.#powers.splice(rando, 1)[0];
-		return selected;
+		const selected = this.#powers.slice();
+		return selected.splice(rando, 1)[0];
 	}
 	set power(value: string) {
 		if (this.#powers.includes(value)) return;

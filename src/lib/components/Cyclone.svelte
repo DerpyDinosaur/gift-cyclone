@@ -66,6 +66,10 @@
 					<li>Open current present</li>
 				</ul>
 			</div>
+
+			<!-- Back face (rotated 180deg initially) -->
+			<div class="absolute p-4 transform-3d w-full h-full rounded-xl shadow-xl backface-hidden rotate-y-180">
+			</div>
 		</div>
 	</div>
 </section>
